@@ -29,7 +29,14 @@ def main():
 
     og_obj = OpenGraph(page_bsoup)
     res = ResponseBuilder(og_obj).get_response_object_in_json()
-
+    print(res == {})
+    if res == '{}':
+        res = json.dumps({
+            'STATUS': 'ERROR',
+            'MSG': "No open graph meta was found for the given url",
+            "CATEGORIES": "no open graph meta tags",
+            'CODE': "404"
+        })
     print(res)
     return res
 
