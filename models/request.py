@@ -10,11 +10,10 @@ class Request:
 
     def get_page_html(self):
         try:
-            urlClient = urlReq(self.url)
-            page_html = urlClient.read()
-            urlClient.close()
+            url_client = urlReq(self.url)
+            page_html = url_client.read()
+            url_client.close()
             return page_html
-        # status code
         except URLError as e:
             return 'HTTPError = ' + str(e)
 

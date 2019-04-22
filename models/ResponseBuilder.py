@@ -27,12 +27,12 @@ class ResponseBuilder:
                 all_og_prop_extensions = self.og_obj.find_all_og_props_by_extension(res_key_name)
                 child_dict = {}
                 for og_prop_extension in all_og_prop_extensions:
-                    name_2nd_og = og_prop_extension["property"][self.find_2nd(og_prop_extension["property"],":")+1:]
-                    if name_2nd_og.count(":") > 0:
+                    name_inner_key_og = og_prop_extension["property"][self.find_2nd(og_prop_extension["property"],":")+1:]
+                    if name_inner_key_og.count(":") > 0:
                         key_name = self.check_if_url(og_prop_extension["content"])
                         child_dict[key_name] = og_prop_extension["content"]
                     else:
-                        child_dict[name_2nd_og] = og_prop_extension["content"]
+                        child_dict[name_inner_key_og] = og_prop_extension["content"]
                 res_dict[res_key_name].append(child_dict)
                 handled_res_key_names.append(res_key_name)
 
